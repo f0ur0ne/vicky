@@ -127,7 +127,7 @@ class Vicky(irc.bot.SingleServerIRCBot):
 
 def main():
     # bot = Vicky('#main', 'vicky', 'localhost', 6667)
-    bot = Vicky('#bot', 'vicky', 'irc.0xfdb.xyz', 6667)
+    bot = Vicky('#bot', 'vicky_41', 'irc.0xfdb.xyz', 6667)
     bot.run()
 
 
