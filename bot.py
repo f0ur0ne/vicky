@@ -26,7 +26,7 @@ class Vicky(irc.bot.SingleServerIRCBot):
 
     def run(self):
         # TODO pull default modules from config
-        enabled_modules = ['example', 'imdb', 'chuck', 'calc', 'zerox']
+        enabled_modules = ['kodictrl']
         self.cm.load_all(enabled_modules, bot=self)
         self.start()
 
@@ -68,25 +68,25 @@ class Vicky(irc.bot.SingleServerIRCBot):
             user=self.channel.getuser(event.source.nick)
         )
         # TEMP stick in a module after events are wired
-        if "http" in msg.message:
-            try:
-                urlexpression = "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
-                possible = re.findall(urlexpression, msg.message)
-                req = get(possible[0])
-                if req.status == 200:
-                    soup = bs4(req.data, "html.parser")
-                    if soup is not None:
-                        try:
-                            title = soup.title.string
-                        except AttributeError as error:
-                            pass
-                        else:
-                            self.sendmsg(title.strip())
-            except:
-                pass
+#        if "http" in msg.message:
+#            try:
+#                urlexpression = "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+#                possible = re.findall(urlexpression, msg.message)
+#                req = get(possible[0])
+#                if req.status == 200:
+#                    soup = bs4(req.data, "html.parser")
+#                    if soup is not None:
+#                        try:
+#                            title = soup.title.string
+#                        except AttributeError as error:
+#                            pass
+#                        else:
+#                            self.sendmsg(title.strip())
+#            except:
+#                pass
 
 
-        elif msg.message.startswith(prefix):
+        if msg.message.startswith(prefix):
             command = Command(prefix=prefix, data=msg)
             # TODO move these
             if command.name == "reload" or command.name == "load":
@@ -126,8 +126,8 @@ class Vicky(irc.bot.SingleServerIRCBot):
 
 
 def main():
-    # bot = Vicky('#main', 'vicky', 'localhost', 6667)
-    bot = Vicky('#bot', 'vicky_41', 'irc.0xfdb.xyz', 6667)
+    # bot = Vicky('#main', 'vicky41', 'localhost', 6667)
+    bot = Vicky('#main', 'kodictrl', 'irc.0xfdb.xyz', 6667)
     bot.run()
 
 
