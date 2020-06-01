@@ -1,7 +1,6 @@
 from lib.cog import Cog
 from lib.command import Command, command
 from kodipydent import Kodi
-import json
 from modules.pastebin import pastebin
 
 my_kodi = Kodi('192.168.1.123')
