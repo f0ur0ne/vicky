@@ -1,6 +1,7 @@
 from lib.cog import Cog
 from lib.command import Command, command
 from kodipydent import Kodi
+import json
 from modules.pastebin import pastebin
 
 my_kodi = Kodi('192.168.1.123')
@@ -83,8 +84,21 @@ class kodictrl(Cog):
 				else: self.sendmsg("i dont know that playlist command")
 			else:
 				self.sendmsg("requires more options")		
+		elif kodi_msg[0] == 'help':												#help
+			self.sendmsg("kodictrl - Vicky IRC bot module for controlling live stream for 0xfdb network")
+			self.sendmsg("USAGE - ;kodictrl option [sub-option] title")
+			self.sendmsg("Availible Options:")
+			self.sendmsg("  list                    Posts list of availible titles")
+			self.sendmsg("  play title              Plays given title")
+			self.sendmsg("  playpause               Pauses/Plays title")
+			self.sendmsg("  stop                    Stops title")
+			self.sendmsg("  playlist                Playlist mgmt (requires the following sub-options)")
+			self.sendmsg("           list           Lists Current Playlist")
+			self.sendmsg("           add title      Adds additional title to playlist")
+			self.sendmsg("           remove	x       Removes title from place in playlist (BROKEN)")
+			self.sendmsg("           swap x y       Swaps 2 titles places in playlist (BROKEN)")
 		else:
-			self.sendmsg("what bruh")
+			self.sendmsg("Command not recognized. Send ';kodictrl help' for a list of options.")
 
 def movie_id(moviename):
 	movieid = ""
