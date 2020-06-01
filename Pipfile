@@ -12,6 +12,7 @@ requests = "*"
 bs4 = "*"
 certifi = "*"
 kodipydent = "*"
+json = "*"
 
 [requires]
 python_version = "3.8"
